@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Music</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div class='container-fluid' style='margin-top: 20px;'>
+  <div class="navbar">
+    <div class="navbar-inner">
+      <a class="brand" href="/">MusicApp <i class='icon-music'></i></a>
+      <ul class="nav">
+        <li><a href="/bands">Bands</a></li>
+        <li><a href="/artists">Artists</a></li>
+        <li><a href="/singles">Singles</a></li>
+        <li><a href="/recordings">Recordings</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class='well'>
+    <%= yield %>
+  </div>
+</div>
+</body>
+</html>

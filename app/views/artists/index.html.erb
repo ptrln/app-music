@@ -1,0 +1,12 @@
+<legend>
+	<h1>
+		Artists <small>(<%= @artists.count %>)</small>
+		<a href="<%=new_artist_path%>" class="btn btn-small pull-right"><i class="icon-plus-sign"></i> Create new artist</a>
+	</h1>
+</legend>
+<% @artists.each do |artist| %>
+<div>
+  <%= link_to(artist.name, artist_path(artist)) %>
+</div>
+<% end %>
+

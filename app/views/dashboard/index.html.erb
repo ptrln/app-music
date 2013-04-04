@@ -1,0 +1,61 @@
+<legend>
+	<h1>
+		Index
+	</h1>
+</legend>
+
+<div class='row-fluid'>
+	<div class="span3">
+	<legend style='text-align: center;'>
+		<a href="<%= bands_path %>">Bands <small>(<%= @bands.count %>)</small></a>
+	</legend>
+	<ul>
+	<% @bands.each do |band| %>
+		<li>
+			<%= link_to(band.name, band_path(band)) %>
+		</li>
+	<% end %>
+	</ul>
+	</div>
+
+	<div class="span3">
+	<legend style='text-align: center;'>
+		<a href="<%= artists_path %>">Artists <small>(<%= @artists.count %>)</small></a>
+	</legend>
+	<ul>
+	<% @artists.each do |artist| %>
+		<li>
+			<%= link_to(artist.name, artist_path(artist)) %>
+		</li>
+	<% end %>
+	</ul>
+	</div>
+
+	<div class="span3">
+	<legend style='text-align: center;'>
+		<a href="<%= singles_path %>">Singles <small>(<%= @singles.count %>)</small></a>
+	</legend>
+	<ul>
+	<% @singles.each do |single| %>
+		<li>
+			<%= link_to(single.title, single_path(single)) %>
+		</li>
+	<% end %>
+	</ul>
+	</div>
+
+	<div class="span3">
+	<legend style='text-align: center;'>
+		<a href="<%= recordings_path %>">Recordings <small>(<%= @recordings.count %>)</small></a>
+	</legend>
+	<ul>
+	<% @recordings.each do |recording| %>
+		<li>
+			<%= link_to(recording.single.title, recording_path(recording)) %>
+			by
+			<%= link_to(recording.band.name, band_path(recording.band)) %>
+		</li>
+	<% end %>
+	</ul>
+	</div>
+</div>

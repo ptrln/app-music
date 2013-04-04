@@ -1,0 +1,30 @@
+<a class='btn btn-small' href='<%= artists_path %>'><i class=' icon-chevron-left'></i> Artists</a>
+<a class='btn btn-small pull-right' href='<%= edit_artist_path(@artist) %>'><i class='icon-edit'></i> Edit</a>
+<br><br>
+<h1><%= @artist.name %> (Artist)</h1>
+
+<h2>
+	Singles
+	<a class='btn btn-small' href='<%= new_artist_single_path(@artist) %>'><i class="icon-plus-sign"></i> Add single</a>
+</h2>
+<ul>
+<% @artist.singles.each do |single| %>
+<li>
+<%= link_to(single.title, single_path(single)) %>
+</li>
+<% end %>
+<%= "No singles" if @artist.singles.empty? %>
+</ul>
+<h2>
+	Recordings
+</h2>
+<ul>
+<% @artist.recordings.each do |recording| %>
+<li>
+<%= link_to(recording.single.title, single_path(recording.single)) %>
+performed by
+<%= link_to(recording.band.name, band_path(recording.band)) %>
+</li>
+<% end %>
+<%= "No recordings" if @artist.recordings.empty? %>
+</ul>

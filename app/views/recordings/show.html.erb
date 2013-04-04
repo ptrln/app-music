@@ -1,0 +1,22 @@
+<a class='btn btn-small' href='<%= recordings_path %>'><i class=' icon-chevron-left'></i> Recordings</a>
+<a class='btn btn-small pull-right' href='<%= edit_recording_path(@recording) %>'><i class='icon-edit'></i> Edit</a>
+<br><br>
+
+<legend>
+	<h1><%= link_to(@recording.single.title, single_path(@recording.single)) %></h1>
+	<small class='pull-right'>covered by <%= link_to(@recording.band.name, band_path(@recording.band)) %></small>
+</legend>
+
+<h2>
+	All Covers
+	<a class='btn btn-small' href='<%= new_single_recording_path(@recording.single) %>'><i class="icon-plus-sign"></i> Add cover</a>
+</h2>
+<ul>
+<% @recording.single.covers.each do |cover| %>
+
+<li>
+<%= link_to(cover.band.name, band_path(cover.band)) %>
+</li>
+<% end %>
+<%= "No covers" if @recording.single.covers.empty? %>
+</ul>

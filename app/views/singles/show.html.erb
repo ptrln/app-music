@@ -1,0 +1,25 @@
+<a class='btn btn-small' href='<%= singles_path %>'><i class=' icon-chevron-left'></i> Single</a>
+<a class='btn btn-small pull-right' href='<%= edit_single_path(@single) %>'><i class='icon-edit'></i> Edit</a>
+<br><br>
+<h1><%= @single.title %></h1>
+<legend style='text-align:right;'>
+written by <%= @single.writer.name %>.
+released <%= @single.release_date %>
+</legend>
+
+<h2>
+	Covers
+	<a class='btn btn-small' href='<%= new_single_recording_path(@single) %>'><i class="icon-plus-sign"></i> Add cover</a>
+</h2>
+<ul>
+<% @single.recordings.each do |recording| %>
+
+<li>
+<%= link_to(recording.single.title, single_path(recording.single)) %>
+performed by
+<%= link_to(recording.band.name, band_path(recording.band)) %>
+</li>
+
+<% end %>
+<%= "No covers" if @single.recordings.empty? %>
+</ul>

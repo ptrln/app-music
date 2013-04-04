@@ -1,0 +1,12 @@
+<legend>
+	<h1>
+		Bands <small>(<%= @bands.count %>)</small>
+		<a href="<%=new_band_path%>" class="btn btn-small pull-right"><i class="icon-plus-sign"></i> Create new band</a>
+	</h1>
+</legend>
+
+<% @bands.each do |band| %>
+<div>
+  <%= link_to(band.name, band_path(band)) %>
+</div>
+<% end %>

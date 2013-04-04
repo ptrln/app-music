@@ -1,0 +1,33 @@
+<a class='btn btn-small' href='<%= bands_path %>'><i class=' icon-chevron-left'></i> Bands</a>
+<a class='btn btn-small pull-right' href='<%= edit_band_path(@band) %>'><i class='icon-edit'></i> Edit</a>
+<br><br>
+<h1>
+	<%= @band.name %> (Band)
+
+</h1>
+<% if @band.has_image? %>
+	<img class="thumbnail" src="<%=@band.image.url%>" style='width: 200px;'>
+<% end %>
+<h2>
+	Artists
+</h2>
+<ol>
+<% @band.artists.each do |artist| %>
+<li><%= link_to(artist.name, artist_path(artist)) %></li>
+<% end %>
+<%= "No artists" if @band.artists.empty? %>
+</ol>
+<h2>
+	Recordings
+	<a class='btn btn-small' href='<%= new_band_recording_path(@band) %>'><i class="icon-plus-sign"></i> Add recording</a>
+</h2>
+<ul>
+<% @band.recordings.each do |recording| %>
+<li>
+<%= link_to(recording.single.title, single_path(recording.single)) %>
+written by
+<%= link_to(recording.single.writer.name, artist_path(recording.single.writer)) %>
+</li>
+<% end %>
+<%= "No recordings" if @band.recordings.empty? %>
+</ul>

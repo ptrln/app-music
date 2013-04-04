@@ -1,0 +1,33 @@
+<%= form_for(@single, :html => { :class => 'form-horizontal' }) do |f| %>
+<div class="control-group <%= "error" unless @single.errors[:title].empty? %>">
+<%= f.label :title, :class => "control-label"  %>
+<div class="controls">
+<%= f.text_field :title %>
+<span class="help-inline"><%= @single.errors[:title].first unless @single.errors[:title].empty? %></span>
+</div>
+</div>
+<div class="control-group <%= "error" unless @single.errors[:release_date].empty? %>">
+<%= f.label :release_date, :class => "control-label"  %>
+<div class="controls">
+<%= f.date_select :release_date, {:start_year => 1900, :end_year => 2020},{:class => "span2"}%>
+<span class="help-inline"><%= @single.errors[:release_date].first unless @single.errors[:release_date].empty? %></span>
+</div>
+</div>
+<div class="control-group">
+<%= f.label :writer, :class => "control-label"  %>
+<div class="controls">
+<%=
+select(
+  :single,
+  :writer_id,
+  @writers.map{ |writer| [writer.name, writer.id]},
+  {},
+  {:class => "span3"}
+  )
+%>
+<br><br>
+<%= f.submit :class => "btn"%>
+<%= link_to "Cancel", :back, :class => "btn" %>
+</div>
+</div>
+<% end %>

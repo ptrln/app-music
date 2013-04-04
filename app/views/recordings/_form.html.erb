@@ -1,0 +1,30 @@
+<%= form_for(@recording, :html => { :class => 'form-horizontal' }) do |f| %>
+
+<div class="control-group">
+<div class='control-label'>
+<%= f.label :single %>
+</div>
+<div class='controls'>
+<%= select(
+  :recording,
+  :single_id,
+  @singles.map { |single| [single.title, single.id]})%>
+
+</div>
+<br>
+<div class='control-group'>
+<%= f.label :band, :class => "control-label" %>
+<div class='controls'>
+<%= select(
+:recording,
+:band_id,
+@bands.map { |band| [band.name, band.id] }
+)%>
+
+<br><br>
+<%= f.submit :class => "btn" %>
+<%= link_to "Cancel", :back, :class => "btn" %>
+</div>
+</div>
+
+<% end %>
