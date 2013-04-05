@@ -1,11 +1,13 @@
 class RecordingsController < ApplicationController
 
   def index
+    cond = (params[:search] ? [:all, :conditions => ['singles.title LIKE ?', "%#{params[:search]}%"]] : [:all])
+
     @recordings = case params[:order]
-    when "name" then Recording.joins(:single).order("singles.title").all
-    when "band" then Recording.joins(:band).order("bands.name").all
-    when "newest" then Recording.order("created_at DESC").all
-    else Recording.all
+    when "name" then Recording.joins(:single).order("singles.title").find(*cond)
+    when "band" then Recording.joins(:band, :single).order("bands.name").find(*cond)
+    when "newest" then Recording.joins(:single).order("created_at DESC").find(*cond)
+    else Recording.joins(:single).find(*cond)
     end
   end
 

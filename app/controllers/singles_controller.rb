@@ -1,11 +1,12 @@
 class SinglesController < ApplicationController
 
   def index
+    cond = (params[:search] ? [:all, :conditions => ['title LIKE ?', "%#{params[:search]}%"]] : [:all])
     @singles = case params[:order]
-    when "name" then Single.order("title").all
-    when "writer" then Single.joins(:writer).order("artists.name").all
-      when "newest" then Single.order("created_at DESC").all
-    else Single.all
+    when "name" then Single.order("title").find(*cond)
+    when "writer" then Single.joins(:writer).order("artists.name").find(*cond)
+      when "newest" then Single.order("created_at DESC").find(*cond)
+    else Single.find(*cond)
     end
   end
 

@@ -1,10 +1,11 @@
 class ArtistsController < ApplicationController
 
   def index
+    cond = (params[:search] ? [:all, :conditions => ['name LIKE ?', "%#{params[:search]}%"]] : [:all])
     @artists =  case params[:order]
-    when "name" then Artist.order("name").all
-    when "newest" then Artist.order("created_at DESC").all
-    else Artist.all
+    when "name" then Artist.order("name").find(*cond)
+    when "newest" then Artist.order("created_at DESC").find(*cond)
+    else Artist.find(*cond)
     end
   end
 

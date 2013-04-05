@@ -3,13 +3,19 @@
 		Bands <small>(<%= @bands.count %>)</small>
 		<small>
 			Order by 
-			<a href='<%= bands_path %>?order=name'>name</a> /
-			<a href='<%= bands_path %>?order=newest'>newest_first</a>
+			<%= link_to('name', :order => "name", :search => params[:search])  %>
+			/
+			<%= link_to('newest_first', :order => "newest", :search => params[:search])  %>
 		</small>
 		<a href="<%=new_band_path%>" class="btn btn-small pull-right"><i class="icon-plus-sign"></i> Create new band</a>
 	</h1>
 </legend>
-
+<form class="form-search pull-right">
+	<div class="input-append">
+	<input type="text" name="search" class="span2 search-query">
+	<button type="submit" class="btn">Search</button>
+	</div>
+</form>
 <% @bands.each do |band| %>
 <div>
   <%= link_to(band.name, band_path(band)) %>

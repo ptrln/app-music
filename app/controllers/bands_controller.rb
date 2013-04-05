@@ -1,10 +1,11 @@
 class BandsController < ApplicationController
 
   def index
+    conds = (params[:search] ? [:all, :conditions => ['name LIKE ?', "%#{params[:search]}%"]] : [:all])
     @bands =  case params[:order]
-    when "name" then Band.order("name").all
-    when "newest" then Band.order("created_at DESC").all
-    else Band.all
+    when "name" then Band.order("name").find(*conds)
+    when "newest" then Band.order("created_at DESC").find(*conds)
+    else Band.find(*conds)
     end
   end
 
@@ -41,5 +42,4 @@ class BandsController < ApplicationController
       render :edit
     end
   end
-
 end

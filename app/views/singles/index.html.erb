@@ -3,13 +3,21 @@
 		Singles <small>(<%= @singles.count %>)</small>
 		<small>
 			Order by 
-			<a href='<%= singles_path %>?order=name'>name</a> /
-			<a href='<%= singles_path %>?order=writer'>writer</a> /
-			<a href='<%= singles_path %>?order=newest'>newest_first</a>
+			<%= link_to('name', :order => "name", :search => params[:search])  %>
+			/
+			<%= link_to('writer', :order => "writer", :search => params[:search])  %>
+			/
+			<%= link_to('newest_first', :order => "newest", :search => params[:search])  %>
 		</small>
 		<a href="<%=new_single_path%>" class="btn btn-small pull-right"><i class="icon-plus-sign"></i> Create new single</a>
 	</h1>
 </legend>
+<form class="form-search pull-right">
+	<div class="input-append">
+	<input type="text" name="search" class="span2 search-query">
+	<button type="submit" class="btn">Search</button>
+	</div>
+</form>
 <% @singles.each do |single| %>
 
 <div>
