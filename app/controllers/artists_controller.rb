@@ -1,7 +1,11 @@
 class ArtistsController < ApplicationController
 
   def index
-    @artists = Artist.all
+    @artists =  case params[:order]
+    when "name" then Artist.order("name").all
+    when "newest" then Artist.order("created_at DESC").all
+    else Artist.all
+    end
   end
 
   def new

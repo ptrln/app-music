@@ -1,7 +1,11 @@
 class BandsController < ApplicationController
 
   def index
-    @bands = Band.all
+    @bands =  case params[:order]
+    when "name" then Band.order("name").all
+    when "newest" then Band.order("created_at DESC").all
+    else Band.all
+    end
   end
 
   def new

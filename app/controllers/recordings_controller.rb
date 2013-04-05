@@ -1,7 +1,12 @@
 class RecordingsController < ApplicationController
 
   def index
-    @recordings = Recording.all
+    @recordings = case params[:order]
+    when "name" then Recording.joins(:single).order("singles.title").all
+    when "band" then Recording.joins(:band).order("bands.name").all
+    when "newest" then Recording.order("created_at DESC").all
+    else Recording.all
+    end
   end
 
   def new

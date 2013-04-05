@@ -1,7 +1,12 @@
 class SinglesController < ApplicationController
 
   def index
-    @singles = Single.all
+    @singles = case params[:order]
+    when "name" then Single.order("title").all
+    when "writer" then Single.joins(:writer).order("artists.name").all
+      when "newest" then Single.order("created_at DESC").all
+    else Single.all
+    end
   end
 
   def new

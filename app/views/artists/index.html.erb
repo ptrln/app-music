@@ -1,6 +1,12 @@
 <legend>
 	<h1>
 		Artists <small>(<%= @artists.count %>)</small>
+		<small>
+			Order by 
+			<a href='<%= artists_path %>?order=name'>name</a> /
+			<a href='<%= artists_path %>?order=newest'>newest_first</a>
+			
+		</small>
 		<a href="<%=new_artist_path%>" class="btn btn-small pull-right"><i class="icon-plus-sign"></i> Create new artist</a>
 	</h1>
 </legend>

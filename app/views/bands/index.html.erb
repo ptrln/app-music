@@ -1,6 +1,11 @@
 <legend>
 	<h1>
 		Bands <small>(<%= @bands.count %>)</small>
+		<small>
+			Order by 
+			<a href='<%= bands_path %>?order=name'>name</a> /
+			<a href='<%= bands_path %>?order=newest'>newest_first</a>
+		</small>
 		<a href="<%=new_band_path%>" class="btn btn-small pull-right"><i class="icon-plus-sign"></i> Create new band</a>
 	</h1>
 </legend>

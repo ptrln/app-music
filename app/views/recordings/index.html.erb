@@ -1,6 +1,12 @@
 <legend>
 	<h1>
 		Recordings <small>(<%= @recordings.count %>)</small>
+		<small>
+			Order by 
+			<a href='<%= recordings_path %>?order=name'>name</a> /
+			<a href='<%= recordings_path %>?order=band'>band</a> /
+			<a href='<%= recordings_path %>?order=newest'>newest_first</a>
+		</small>
 		<a href="<%=new_recording_path%>" class="btn btn-small pull-right"><i class="icon-plus-sign"></i> Create new recording</a>
 	</h1>
 </legend>

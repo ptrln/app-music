@@ -1,6 +1,12 @@
 <legend>
 	<h1>
 		Singles <small>(<%= @singles.count %>)</small>
+		<small>
+			Order by 
+			<a href='<%= singles_path %>?order=name'>name</a> /
+			<a href='<%= singles_path %>?order=writer'>writer</a> /
+			<a href='<%= singles_path %>?order=newest'>newest_first</a>
+		</small>
 		<a href="<%=new_single_path%>" class="btn btn-small pull-right"><i class="icon-plus-sign"></i> Create new single</a>
 	</h1>
 </legend>
