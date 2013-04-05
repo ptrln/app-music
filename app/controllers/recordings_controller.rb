@@ -5,7 +5,7 @@ class RecordingsController < ApplicationController
 
     @recordings = case params[:order]
     when "name" then Recording.joins(:single).order("singles.title").find(*cond)
-    when "band" then Recording.joins(:band, :single).order("bands.name").find(*cond)
+    when "band" then Recording.joins(:band, :single).order("bands.name").find(*cond) #REV: perhaps should move into the model
     when "newest" then Recording.joins(:single).order("created_at DESC").find(*cond)
     else Recording.joins(:single).find(*cond)
     end

@@ -19,7 +19,7 @@
 		<%= f.file_field :image %>
 	</div>
 </div>
-  
+
 
 <div class="control-group">
 <%= f.label :members, :class => "control-label"  %>
@@ -33,8 +33,8 @@ check_box_tag(
   artist.id,
   @band.artist_ids.include?(artist.id),
   id: "artist_id_#{artist.id}",
-)
-%>
+)$
+%> <!-- it may be a good idea to avoid mixing the form helpers with methods like chek box tag. -->
 <%= artist.name %>
 </label>
 <% end %>

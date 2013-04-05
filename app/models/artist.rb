@@ -1,4 +1,4 @@
-class Artist < ActiveRecord::Base
+class Artist < ActiveRecord::Base #REV: Everything looks great, you guys really did an awesome job on this one. 
   attr_accessible :name
   has_many :band_artists
   has_many :bands, :through => :band_artists

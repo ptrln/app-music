@@ -3,8 +3,8 @@ class BandsController < ApplicationController
   def index
     conds = (params[:search] ? [:all, :conditions => ['name LIKE ?', "%#{params[:search]}%"]] : [:all])
     @bands =  case params[:order]
-    when "name" then Band.order("name").find(*conds)
-    when "newest" then Band.order("created_at DESC").find(*conds)
+    when "name" then Band.order("name").find(*conds) 
+    when "newest" then Band.order("created_at DESC").find(*conds) #REV: any chance this could be moved into the model?
     else Band.find(*conds)
     end
   end

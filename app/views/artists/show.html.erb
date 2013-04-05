@@ -7,7 +7,7 @@
 	Singles
 	<a class='btn btn-small' href='<%= new_artist_single_path(@artist) %>'><i class="icon-plus-sign"></i> Add single</a>
 </h2>
-<ul>
+<ul> <!--#REV: This template is a bit difficult to read, but then again, it's html... -->
 <% @artist.singles.each do |single| %>
 <li>
 <%= link_to(single.title, single_path(single)) %>
@@ -26,5 +26,5 @@ performed by
 <%= link_to(recording.band.name, band_path(recording.band)) %>
 </li>
 <% end %>
-<%= "No recordings" if @artist.recordings.empty? %>
+<%= "No recordings" if @artist.recordings.empty? %> <!--REV you may consider refactoring these blocks out into a helper. -->
 </ul>
