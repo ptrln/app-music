@@ -1,3 +1,16 @@
+<form id='search-form' action='/bands' class="form-search input-prepend input-append pull-right">
+	<div class="btn-group">
+    	<select class='span2' id='search-select'>
+		  <option value='bands'>Bands</option>
+		  <option value='artists'>Artists</option>
+		  <option value='singles'>Singles</option>
+		  <option value='recordings'>Recordings</option>
+		</select>
+  	</div>
+    <input type="text" name='search' id="prependedDropdownButton" class="span2 search-query">
+    <button type="submit" class="btn">Search</button>
+</form>
+
 <legend>
 	<h1>
 		Index
@@ -60,3 +73,9 @@
 	</ul>
 	</div>
 </div>
+
+<script>
+	$("#search-select").on("change", function() {
+		$("#search-form").attr("action", "/" + $("#search-select").val());
+	})
+</script>
